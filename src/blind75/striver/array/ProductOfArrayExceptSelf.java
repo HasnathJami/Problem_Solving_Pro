@@ -10,7 +10,7 @@ enum Approach {
 
 class Solution {
     // Input the approach you want to execute.
-    private static final Approach approach = Approach.FIFTH_APPROACH;
+    private static final Approach approach = Approach.THIRD_APPROACH;
 
     public int[] productExceptSelf(int[] nums) {
         if (approach.equals(Approach.FIRST_APPROACH)) {
