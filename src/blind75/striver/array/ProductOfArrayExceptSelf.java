@@ -4,12 +4,13 @@ enum Approach {
     FIRST_APPROACH,
     SECOND_APPROACH,
     THIRD_APPROACH,
-    FOURTH_APPROACH
+    FOURTH_APPROACH,
+    FIFTH_APPROACH
 }
 
 class Solution {
     // Input the approach you want to execute.
-    private static final Approach approach = Approach.THIRD_APPROACH;
+    private static final Approach approach = Approach.FIFTH_APPROACH;
 
     public int[] productExceptSelf(int[] nums) {
         if (approach.equals(Approach.FIRST_APPROACH)) {
@@ -20,6 +21,8 @@ class Solution {
             return Approach_3(nums);
         } else if (approach.equals(Approach.FOURTH_APPROACH)) {
             return Approach_4(nums);
+        } else if (approach.equals(Approach.FIFTH_APPROACH)) {
+            return Approach_5(nums);
         }
         return null;
     }
@@ -92,7 +95,6 @@ class Solution {
      ---------------------------------------------------------------------- NOTE ----------------------------------------------------------------------
      * find the product of each element (prefix) from the left side (except itself) and store it into "productsExceptSelf" array using single loop
      * for the first element product should be 1 as there is no prefix element of it
-     * reset the product as
      * find the product of each element (suffix) from the right side (except itself)
      * Then like before you not only store it into "productsExceptSelf" array using single loop but also have to multiply with the existing value of "productsExceptSelf" because we have to show our result only with the output array, and we can't use separate arrays for this.
      * Example with Steps:
@@ -123,9 +125,8 @@ class Solution {
      ---------------------------------------------------------------------- NOTE ----------------------------------------------------------------------
      * find the product of each element (prefix) from the left side (except itself) and store it into "prefixProductsExceptSelf" array using single loop
      * for the first element product should be 1 as there is no prefix element of it
-     * reset the product as
-     * find the product of each element (suffix) from the right side (except itself)
      * find the product of each element (suffix) from the right side (except itself) and store it into "suffixProductsExceptSelf" array using single loop
+     * Multiply these two array's value and store it into "resultantProductsExceptSelf" array using single loop
      * Example with Steps:
        same like third approach but here we have used separate arrays for prefix, suffix and result
 
@@ -151,6 +152,53 @@ class Solution {
         }
         return resultantProductsExceptSelf;
     }
+
+    // Approach 5: without division operation and single loop but using extra arrays (TC:O(n) SC: 0(N))
+    // Outcome: ACCEPTED with 3 ms runtime
+    /*
+     ---------------------------------------------------------------------- NOTE ----------------------------------------------------------------------
+     * find the product of each element (prefix) from the left side (with itself) and store it into "prefixProductsWithSelf" array using single loop
+     * for the first element product should be 1 as there is no prefix element of it
+     * find the product of each element (suffix) from the right side (woth itself) and store it into "suffixProductsWithSelf" array using single loop
+     * Now, we have to multiply each element's prefix product value with suffix product value (excluding itself)
+     * with these conditions with "resultantProducts" array:
+     * 1. if it is the first element of the array then only store its suffix product value, or it would be an index related exception as it tries to access at (-1) index. So, exclude it.
+     * 2. if it is the last element of the array then only store its prefix product value, or it would be an index related exception as it tries to access at (resultantProducts + 1) index. So, exclude it.
+     * 3. if there is not even a single zero in the given input array : it's simple. Divide each element with the non-zero product.
+     * Example with Steps:
+       same like 4th approach but here we have used separate arrays for prefix, suffix and result
+       and in the final step, we have to perform some logical operations.
+       such that if the value is in the 2nd position, take the value of the 1st position (prefix position) from the "prefix array" and take the value of the 3rd position from the "suffix array". Then, multiply them and store the result in the "resultant array"
+
+    */
+    private int[] Approach_5(int[] nums) {
+        int product = 1;
+        int[] resultantProducts = new int[nums.length];
+        int[] prefixProductsWithSelf = new int[nums.length];
+        int[] suffixProductsWithSelf = new int[nums.length];
+
+        for (int i = 0; i < nums.length; i++) {
+            product = product * nums[i];
+            prefixProductsWithSelf[i] = product;
+        }
+        product = 1;
+        for (int i = nums.length - 1; i >= 0; i--) {
+            product = product * nums[i];
+            suffixProductsWithSelf[i] = product;
+        }
+
+        for (int i = 0; i < nums.length; i++) {
+            if (i == 0) {
+                resultantProducts[i] = suffixProductsWithSelf[i + 1];
+            } else if (i == nums.length - 1) {
+                resultantProducts[i] = prefixProductsWithSelf[i - 1];
+            } else {
+                resultantProducts[i] = prefixProductsWithSelf[i - 1] * suffixProductsWithSelf[i + 1];
+            }
+
+        }
+        return resultantProducts;
+    }
 }
 
 // Conclusion: Approach-2 is more efficient with O(1) SC and O(N) TC. But if division operation is not allowed then Approach-3 is more efficient with a good runtime (1 ms) than others
@@ -159,7 +207,7 @@ class Solution {
 //Driver Class (Must be excluded in the online judge submission)
 class Driver {
     public static void main(String[] args) {
-         int nums[] = {1, 2, 3, 4};
+        int nums[] = {1, 2, 3, 4};
         // int nums[] = {-1, 1, 0, -3, 3};
         // int nums[] = {0, 0};
         // int nums[] = {0, 1};
