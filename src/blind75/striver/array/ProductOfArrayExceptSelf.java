@@ -24,7 +24,7 @@ class Solution {
         return null;
     }
 
-    // Approach 1: Bruteforce Approach with double loops (TC:O(n2) SC: 0(n))
+    // Approach 1: Bruteforce Approach with nested loops (TC:O(n2) SC: 0(n))
     // Outcome: TLE
     /*
      ---------------------------------------------------------------------- NOTE ----------------------------------------------------------------------
