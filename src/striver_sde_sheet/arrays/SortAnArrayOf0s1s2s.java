@@ -1,5 +1,5 @@
 // package name (Must be excluded in the online judge submission)
-package blind75.striver.array;
+package striver_sde_sheet.arrays;
 
 
 //Define Approaches
