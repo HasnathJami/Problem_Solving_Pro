@@ -13,7 +13,7 @@ class SortAnArrayOf0s1s2s {
     }
 
     // Input the approach you want to execute.
-    private static final Approach_SortAnArrayOf0s1s2s approach = Approach_SortAnArrayOf0s1s2s.THIRD_APPROACH;
+    private static final Approach_SortAnArrayOf0s1s2s approach = Approach_SortAnArrayOf0s1s2s.SECOND_APPROACH;
 
     // Maintain the actual method name provided by LeetCode to avoid any error during submission time
     public void sortColors(int[] nums) {
@@ -30,7 +30,7 @@ class SortAnArrayOf0s1s2s {
 
     // Approach_1: Using Bruteforce Approach(i.e;, any type of sorting Algorithm (Similar to Counting Sort) TC = 0(n2) and SC = 0(1)
     // I have used Bubble Sort here
-    // Outcome: TLE
+    // Outcome: ACCEPTED in the LeetCode but may be TLE in some cases.
     /*
      ---------------------------------------------------------------------- NOTE ----------------------------------------------------------------------
      * if the number length is 1 no need perform the operation, just return it.
@@ -44,9 +44,10 @@ class SortAnArrayOf0s1s2s {
      ---------------------------------------------------------------------- Algorithm ----------------------------------------------------------------------
      * Bubble Sort Algorithm from DSA_PRO Resource
     */
-    private int[] Approach_1(int[] nums) {
+    private void Approach_1(int[] nums) {
         if (nums.length == 1) {
-            return nums;
+            showResult(nums);
+            return;
         }
 
         boolean isSwappedOnce = false;
@@ -63,8 +64,6 @@ class SortAnArrayOf0s1s2s {
         }
 
         showResult(nums);
-
-        return nums;
     }
 
     // Approach_2: Using Counting Sort Algorithm (Similar to Counting Sort) TC = 0(2n) and  and SC = 0(1)
@@ -85,6 +84,7 @@ class SortAnArrayOf0s1s2s {
 
         if (nums.length == 1) {
             showResult(nums);
+            return;
         }
 
         int countZeroes = 0;
@@ -137,6 +137,11 @@ class SortAnArrayOf0s1s2s {
         int mid = 0;
         int high = nums.length - 1;
 
+        if (nums.length == 1) {
+            showResult(nums);
+            return;
+        }
+
         while (mid <= high) {
             if (nums[mid] == 0) {
                 swap(low, mid, nums);
@@ -154,14 +159,14 @@ class SortAnArrayOf0s1s2s {
 
     private void swap(int firstIndex, int secondIndex, int nums[]) {
         //with using temp variable
-//        int temp = nums[firstIndex];
-//        nums[firstIndex] = nums[secondIndex];
-//        nums[secondIndex] = temp;
+        int temp = nums[firstIndex];
+        nums[firstIndex] = nums[secondIndex];
+        nums[secondIndex] = temp;
 
-        //without using temp variable
-        nums[firstIndex] = nums[firstIndex] + nums[secondIndex];
-        nums[secondIndex] = nums[firstIndex] - nums[secondIndex];
-        nums[firstIndex] = nums[firstIndex] - nums[secondIndex];
+        //without using temp variable //problem with Approach-3 in case {2} , {2,2}, etc. in which, when the pointer is pointing to same value, in this process changes the value of the two pointers with same value as both pointer pointing to same value. for example = {2} if nums[first] changes nums[second] will be automatically changed.
+//        nums[firstIndex] = nums[firstIndex] + nums[secondIndex];
+//        nums[secondIndex] = nums[firstIndex] - nums[secondIndex];
+//        nums[firstIndex] = nums[firstIndex] - nums[secondIndex];
     }
 
     private void showResult(int[] nums) {
@@ -177,7 +182,8 @@ class SortAnArrayOf0s1s2s {
     // Driver Class (Must be excluded in the online judge submission)
     public static class Driver_SortAnArrayOf01s02s03s {
         public static void main(String[] args) {
-            int nums[] = {2, 0, 2, 1, 1, 0};
+            //           int nums[] = {2, 0, 2, 1, 1, 0};
+            int nums[] = {2};
 //        // int nums[] = {2,0,1};
             SortAnArrayOf0s1s2s sol = new SortAnArrayOf0s1s2s();
             sol.sortColors(nums);
