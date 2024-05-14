@@ -1,17 +1,21 @@
+// package name (Must be excluded in the online judge submission)
 package blind75.striver.array;
 
-enum Approach {
-    FIRST_APPROACH,
-    SECOND_APPROACH,
-    THIRD_APPROACH,
-    FOURTH_APPROACH,
-    FIFTH_APPROACH
-}
+// Replace class name with "Solution" when submit it to LeetCode
+class ProductOfArrayExceptSelf {
 
-class Solution {
+    enum Approach {
+        FIRST_APPROACH,
+        SECOND_APPROACH,
+        THIRD_APPROACH,
+        FOURTH_APPROACH,
+        FIFTH_APPROACH
+    }
+
     // Input the approach you want to execute.
     private static final Approach approach = Approach.THIRD_APPROACH;
 
+    // Maintain the actual method name provided by LeetCode to avoid any error during submission time
     public int[] productExceptSelf(int[] nums) {
         if (approach.equals(Approach.FIRST_APPROACH)) {
             return Approach_1(nums);
@@ -199,28 +203,28 @@ class Solution {
         }
         return resultantProducts;
     }
+
+    //Driver Class (Must be excluded in the online judge submission)
+    public static class Driver {
+        public static void main(String[] args) {
+            int nums[] = {1, 2, 3, 4};
+            // int nums[] = {-1, 1, 0, -3, 3};
+            // int nums[] = {0, 0};
+            // int nums[] = {0, 1};
+            ProductOfArrayExceptSelf sol = new ProductOfArrayExceptSelf();
+            int arr[] = sol.productExceptSelf(nums);
+
+            for (int i = 0; i < arr.length; i++) {
+                System.out.print(arr[i]);
+                if (i != arr.length - 1) {
+                    System.out.print(" ");
+                }
+
+            }
+
+        }
+    }
 }
 
 // Conclusion: Approach-2 is more efficient with O(1) SC and O(N) TC. But if division operation is not allowed then Approach-3 is more efficient with a good runtime (1 ms) than others
 // FUTURE PLAN: In the future, try to implement more approaches (i.e., prefix-postfix reference from neet_code channel or other approaches), INSHAALLAH
-
-//Driver Class (Must be excluded in the online judge submission)
-class Driver {
-    public static void main(String[] args) {
-        int nums[] = {1, 2, 3, 4};
-        // int nums[] = {-1, 1, 0, -3, 3};
-        // int nums[] = {0, 0};
-        // int nums[] = {0, 1};
-        Solution sol = new Solution();
-        int arr[] = sol.productExceptSelf(nums);
-
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i]);
-            if (i != arr.length - 1) {
-                System.out.print(" ");
-            }
-
-        }
-
-    }
-}
