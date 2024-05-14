@@ -3,7 +3,7 @@ package utils;
 
 
 // Replace class name with "Solution" when submit it to LeetCode
-class Solution {
+class BoilerPlate {
 
     //Define Approaches
     enum Approach {
