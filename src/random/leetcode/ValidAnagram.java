@@ -52,13 +52,14 @@ class ValidAnagram {
         if (s.length() != t.length()) {
             return false;
         }
+        char[] tArray = t.toCharArray();
         for (int i = 0; i < s.length(); i++) {
-            for (int j = 0; j < t.length(); j++) {
-                if (s.charAt(i) == t.charAt(j)) {
+            areCharactersSame = false;
+            for (int j = 0; j < tArray.length; j++) {
+                if (s.charAt(i) == tArray[j]) {
                     areCharactersSame = true;
+                    tArray[j] = '\0';
                     break;
-                } else {
-                    areCharactersSame = false;
                 }
             }
             if (areCharactersSame == false) {
@@ -201,8 +202,8 @@ class ValidAnagram {
             // Code starts from here.
             ValidAnagram vAnagram = new ValidAnagram();
 
-            String firstValue = "rat";
-            String secondValue = "car";
+            String firstValue = "aacc";
+            String secondValue = "ccac";
 
             Boolean result = vAnagram.isAnagram(firstValue, secondValue);
 
