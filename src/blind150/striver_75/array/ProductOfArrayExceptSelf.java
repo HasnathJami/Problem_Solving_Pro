@@ -1,5 +1,5 @@
 // package name (Must be excluded in the online judge submission)
-package blind75.striver.array;
+package blind150.striver_75.array;
 
 // Replace class name with "Solution" when submit it to LeetCode
 class ProductOfArrayExceptSelf {
