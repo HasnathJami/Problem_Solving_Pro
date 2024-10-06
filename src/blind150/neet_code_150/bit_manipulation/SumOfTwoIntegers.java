@@ -45,7 +45,7 @@ class SumOfTwoIntegers {
       1. Firstly, find the carry of (a+b)
       2. add a and b (without carry) in a
       3. left shift 1 times of carry value and store it to b
-      4. repeat unless b<=0..else return a
+      4. repeat unless b!=0..else return a
       Here, we have added two numbers without carry with xor, so we have to add carry any how. So, we have AND a and b to extract carries. and left shift carry...as we know that in mathematics if we found any carry it wil add with first left value.
       Then, we are repeating the process ...as we have to add these numbers (without carry) repeat until b>0, if b==0 that's mean nothing to add and all caries have already added
 
