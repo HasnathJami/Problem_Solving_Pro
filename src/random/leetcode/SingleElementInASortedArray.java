@@ -1,6 +1,6 @@
 package random.leetcode;
 
-//Note : This Problem is same as "MISSING NUMBER" Problem
+//Note : This Problem is same as "SINGLE NUMBER" Problem
 // Replace class name with "Solution" when submit it to LeetCode
 class SingleElementInASortedArray {
     public int singleNonDuplicate(int[] nums) {
