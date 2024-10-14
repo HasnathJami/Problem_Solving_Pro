@@ -1,6 +1,7 @@
 package random.leetcode.mathematics;
 
 //note same as "POW(x,n)" with mod
+// Result: ERROR (UNSOLVED)
 class SuperPow {
     public int superPow(int a, int[] b) {
         int result = 1;
