@@ -32,6 +32,9 @@ class CountPrimes {
     }
 
     // Approach_1: Sieve of Eratosthenes,  Time Complexity -> O(n log(log n)), and Space Complexity -> O(n)
+    // Here, in the inner loop for the numbers n/2 + n/3 + n/4 = n(1/2 + 1/3) = O(n logn)
+    // It's not O(n log(n)) because the outer loop is iterated from 2 to root(n) times,not 2 to n
+    // So, Overall TC => O(n log(logn))
     // Outcome: ACCEPTED
     /*
      ---------------------------------------------------------------------- NOTE ----------------------------------------------------------------------
