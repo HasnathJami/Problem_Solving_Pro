@@ -64,6 +64,7 @@ class FindGreatestCommonDivisorOfArray {
         return a;
     }
 
+    //TC-> O(log(min(a,b))), SC-> O(log(min(a,b)))
     public int calculateGCD_Recursive(int a, int b) {
         if (b <= 0) {
             return a;
