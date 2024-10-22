@@ -4,6 +4,8 @@ package random;
 import java.util.HashMap;
 
 // Replace class name with "Solution" when submit it to LeetCode
+
+//Find the largest sub-array with equal number of 0's and 1's
 class ContiguousArray {
 
     //Define Approaches
