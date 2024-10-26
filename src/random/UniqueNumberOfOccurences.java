@@ -20,9 +20,6 @@ public class UniqueNumberOfOccurences {
 //        for (int i = 0; i < nums.length; i++) {
 //            hs.add(hm.get(nums[i]));
 //        }
-
-        System.out.println(hs.size());
-        System.out.println(hm.size());
         if (hs.size() == hm.size()) {
             return true;
         } else {
